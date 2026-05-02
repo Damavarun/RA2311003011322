@@ -1,5 +1,5 @@
 const axios = require("axios");
-const Log = require("./logger");
+const Log = require("../../logging_middleware/logger");
 
 const getTasks = async () => {
   await Log("backend", "info", "service", "Fetching tasks");

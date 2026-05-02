@@ -1,5 +1,5 @@
 const { getTasks, optimizeTasks } = require("./service");
-const Log = require("./logger");
+const Log = require("../../logging_middleware/logger");
 
 const handleOptimize = async (req, res) => {
   try {
