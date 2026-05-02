@@ -167,22 +167,19 @@ Logs are sent to:
 
 ## 📸 Screenshots
 
-Include:
-
-## 📸 Screenshots
-
 ### Register API
-![Register](screenshots/register.png)
+![Register](vehicle_maintenance_scheduler/screenshots/register.png)
 
 ---
 
 ### Auth API
-![Auth](screenshots/auth.png)
+![Auth](vehicle_maintenance_scheduler/screenshots/auth.png)
 
 ---
 
 ### Optimize API
-![Optimize](screenshots/optimize.png)
+![Optimize](vehicle_maintenance_scheduler/screenshots/optimize.png)
+
 ---
 
 ## 👤 Author
