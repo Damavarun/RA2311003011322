@@ -1,6 +1,6 @@
-# Backend Application
+# Vehicle Maintenance Scheduler
 
-Core backend service with 0/1 Knapsack optimization algorithm and API integration.
+Core backend service with 0/1 Knapsack optimization algorithm for scheduling maintenance tasks.
 
 ## Files
 

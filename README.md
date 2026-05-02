@@ -7,16 +7,17 @@ A backend application demonstrating **0/1 Knapsack optimization** with **central
 ```
 RA2311003011322/
 ├── /logging_middleware
-│   └── Logger implementation for centralized logging
-├── /backend_app
+│   └── logger.js
+├── /vehicle_maintenance_scheduler
 │   ├── src/
-│   │   ├── controller.js      (API endpoint handler)
-│   │   ├── service.js         (Business logic & Knapsack algorithm)
-│   │   ├── logger.js          (Logging middleware)
-│   │   ├── index.js           (Express server)
-│   ├── package.json           (Dependencies)
-│   ├── .env                   (Environment variables)
-└── README.md
+│   │   ├── controller.js
+│   │   ├── index.js
+│   │   ├── service.js
+│   ├── package.json
+│   └── .env
+├── notification_system_design.md
+├── README.md
+└── .gitignore
 ```
 
 ## 🚀 Setup Steps
