@@ -1,6 +1,6 @@
 # Vehicle Maintenance Scheduler with Logging Middleware
 
-## 📌 Overview
+## Overview
 
 This project is a backend microservice that optimizes vehicle maintenance scheduling using the **0/1 Knapsack algorithm**.
 
@@ -13,7 +13,7 @@ The system selects the optimal subset of tasks within limited hours to **maximiz
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 RA2311003011322/
@@ -33,7 +33,7 @@ RA2311003011322/
 
 ---
 
-## 🚀 Setup Steps
+## Setup Steps
 
 ### 1. Install Dependencies
 
@@ -76,7 +76,7 @@ http://localhost:3000
 
 ---
 
-## 📡 API Endpoint
+## API Endpoint
 
 ### GET /optimize
 
@@ -88,7 +88,7 @@ http://localhost:3000/optimize
 
 ---
 
-### ✅ Response
+###  Response
 
 ```json
 {
@@ -112,7 +112,7 @@ http://localhost:3000/optimize
 
 ---
 
-## 🧠 Algorithm Explanation
+##  Algorithm Explanation
 
 This problem is solved using the **0/1 Knapsack algorithm**:
 
@@ -124,7 +124,7 @@ Dynamic Programming is used to compute optimal value, followed by **backtracking
 
 ---
 
-## 📊 Logging Middleware
+##  Logging Middleware
 
 A reusable logging function is implemented:
 
@@ -146,7 +146,7 @@ Logs are sent to:
 
 ---
 
-## ⚙️ Features
+##  Features
 
 * API integration with external service
 * Token-based authentication
@@ -156,7 +156,7 @@ Logs are sent to:
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 * Node.js
 * Express.js
@@ -165,7 +165,7 @@ Logs are sent to:
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 ### Register API
 ![Register](vehicle_maintenance_scheduler/screenshots/register.png)
