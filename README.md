@@ -1,6 +1,6 @@
-# RA2311003011322 - Backend Optimization & Logging
+# Backend Optimization & Logging Middleware
 
-A backend application demonstrating **0/1 Knapsack optimization** with **logging middleware** integration.
+A backend application demonstrating **0/1 Knapsack optimization** with **centralized logging middleware** for API integration.
 
 ## 📁 Project Structure
 
