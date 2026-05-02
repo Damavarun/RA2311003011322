@@ -1,14 +1,25 @@
-# Backend Optimization & Logging Middleware
+# Vehicle Maintenance Scheduler with Logging Middleware
 
-A backend application demonstrating **0/1 Knapsack optimization** with **centralized logging middleware** for API integration.
+## 📌 Overview
+
+This project is a backend microservice that optimizes vehicle maintenance scheduling using the **0/1 Knapsack algorithm**.
+
+Each task has:
+
+* **Duration** → time required
+* **Impact** → importance score
+
+The system selects the optimal subset of tasks within limited hours to **maximize total impact**.
+
+---
 
 ## 📁 Project Structure
 
 ```
 RA2311003011322/
-├── /logging_middleware
+├── logging_middleware/
 │   └── logger.js
-├── /vehicle_maintenance_scheduler
+├── vehicle_maintenance_scheduler/
 │   ├── src/
 │   │   ├── controller.js
 │   │   ├── index.js
@@ -20,115 +31,161 @@ RA2311003011322/
 └── .gitignore
 ```
 
+---
+
 ## 🚀 Setup Steps
 
 ### 1. Install Dependencies
+
 ```bash
-cd backend_app
+cd vehicle_maintenance_scheduler
 npm install
 ```
 
+---
+
 ### 2. Configure Environment
-Create `.env` file with:
+
+Create `.env` file:
+
 ```
-TOKEN=your_access_token_from_evaluation_service
+TOKEN=your_access_token
 ```
 
-Get your token by:
-1. **Register**: POST `http://20.207.122.201/evaluation-service/register`
-2. **Auth**: POST `http://20.207.122.201/evaluation-service/auth`
-3. **Copy token** to `.env`
+---
 
-### 3. Run Server
+### 3. Get Access Token
+
+1. POST `/evaluation-service/register`
+2. POST `/evaluation-service/auth`
+3. Copy `access_token` into `.env`
+
+---
+
+### 4. Run Server
+
 ```bash
 node src/index.js
 ```
 
-Server runs on: `http://localhost:3000`
+Server runs at:
 
-## 📡 API Details
-
-### Endpoint: GET /optimize
-
-**Request:**
 ```
-GET http://localhost:3000/optimize
+http://localhost:3000
 ```
-
-**Response:**
-```json
-{
-  "totalImpact": 22
-}
-```
-
-**What it does:**
-- Fetches tasks from evaluation service with Duration and Impact
-- Uses 0/1 Knapsack algorithm to maximize impact within time limit
-- Returns optimal total impact value
-
-## 🧠 Knapsack Algorithm
-
-**Problem:** 
-- Given tasks with Duration (weight) and Impact (value)
-- Limited hours available
-- Maximize total impact
-
-**Solution:**
-Dynamic Programming table where `dp[i][w]` = max impact using first i tasks with w hours.
-
-**Complexity:**
-- Time: O(n * maxHours)
-- Space: O(n * maxHours)
-
-## 📊 Logging Middleware
-
-All operations logged via `Log()` function:
-```javascript
-await Log(stack, level, package, message)
-```
-
-**Parameters:**
-- `stack`: "backend"
-- `level`: "info" | "error" | "warn"
-- `package`: Module name (e.g., "controller", "service")
-- `message`: Description
-
-**Example:**
-```javascript
-await Log("backend", "info", "controller", "Optimize called");
-```
-
-Logs sent to: `http://20.207.122.201/evaluation-service/logs`
-
-## 🛠️ Technologies
-
-- **Node.js** - Runtime
-- **Express** - Web framework
-- **Axios** - HTTP client
-- **Dotenv** - Environment management
-
-## ⚙️ Key Features
-
-✅ API integration with evaluation service  
-✅ Token-based authentication  
-✅ Centralized logging middleware  
-✅ 0/1 Knapsack optimization algorithm  
-✅ Error handling with fallback mock data  
-✅ Express.js REST API  
-
-## 📝 Notes
-
-- Mock data used if evaluation service unavailable
-- Token expires after specified duration
-- All logs require valid authentication token
-- Knapsack algorithm handles edge cases (no tasks, insufficient time)
-
-## 👤 Author
-
-**Roll Number:** RA2311003011322  
-**GitHub:** Damavarun
 
 ---
 
-**Status:** ✅ Complete and Tested
+## 📡 API Endpoint
+
+### GET /optimize
+
+**Request:**
+
+```
+http://localhost:3000/optimize
+```
+
+---
+
+### ✅ Response
+
+```json
+{
+  "totalImpact": 22,
+  "selectedTasks": [
+    {
+      "Duration": 2,
+      "Impact": 5
+    },
+    {
+      "Duration": 3,
+      "Impact": 7
+    },
+    {
+      "Duration": 5,
+      "Impact": 10
+    }
+  ]
+}
+```
+
+---
+
+## 🧠 Algorithm Explanation
+
+This problem is solved using the **0/1 Knapsack algorithm**:
+
+* Duration → Weight
+* Impact → Value
+* Max Hours → Capacity
+
+Dynamic Programming is used to compute optimal value, followed by **backtracking** to retrieve selected tasks.
+
+---
+
+## 📊 Logging Middleware
+
+A reusable logging function is implemented:
+
+```js
+Log(stack, level, package, message)
+```
+
+### Example:
+
+```js
+await Log("backend", "info", "controller", "Optimize called");
+```
+
+Logs are sent to:
+
+```
+/evaluation-service/logs
+```
+
+---
+
+## ⚙️ Features
+
+* API integration with external service
+* Token-based authentication
+* Centralized logging middleware
+* Dynamic Programming optimization
+* Clean modular architecture
+
+---
+
+## 🛠️ Tech Stack
+
+* Node.js
+* Express.js
+* Axios
+* Dotenv
+
+---
+
+## 📸 Screenshots
+
+Include:
+
+## 📸 Screenshots
+
+### Register API
+![Register](screenshots/register.png)
+
+---
+
+### Auth API
+![Auth](screenshots/auth.png)
+
+---
+
+### Optimize API
+![Optimize](screenshots/optimize.png)
+---
+
+## 👤 Author
+
+**Roll Number:** RA2311003011322
+**GitHub:** https://github.com/Damavarun

@@ -15,8 +15,8 @@ const getTasks = async () => {
     );
     return res.data;
   } catch (err) {
+    await Log("backend", "error", "service", "Using mock data for testing");
     // Fallback to mock data for testing
-    console.log("Using mock data for testing");
     return {
       tasks: [
         { Duration: 2, Impact: 5 },
@@ -37,7 +37,7 @@ const optimizeTasks = (tasks, maxHours) => {
   );
 
   for (let i = 1; i <= n; i++) {
-    let { Duration, Impact } = tasks[i - 1];
+    const { Duration, Impact } = tasks[i - 1];
 
     for (let w = 0; w <= maxHours; w++) {
       if (Duration <= w) {
@@ -51,7 +51,21 @@ const optimizeTasks = (tasks, maxHours) => {
     }
   }
 
-  return dp[n][maxHours];
+  // 🔥 BACKTRACK TO FIND SELECTED TASKS
+  let w = maxHours;
+  const selectedTasks = [];
+
+  for (let i = n; i > 0 && w > 0; i--) {
+    if (dp[i][w] !== dp[i - 1][w]) {
+      selectedTasks.push(tasks[i - 1]);
+      w -= tasks[i - 1].Duration;
+    }
+  }
+
+  return {
+    totalImpact: dp[n][maxHours],
+    selectedTasks: selectedTasks.reverse()
+  };
 };
 
 module.exports = { getTasks, optimizeTasks };

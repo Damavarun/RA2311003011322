@@ -17,7 +17,7 @@ const Log = async (stack, level, pkg, message) => {
       }
     );
   } catch (err) {
-    console.log("Log failed");
+    console.log("Log failed:", err.message);
   }
 };
 
